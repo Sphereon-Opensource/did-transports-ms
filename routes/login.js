@@ -7,15 +7,16 @@ const router = express.Router();
 router.post('/', function (req, res, next) {
     const {jwt, pushToken, boxPub} = req.body;
 
-    console.log(jwt);
     if (!jwt || !pushToken || !boxPub) {
-        next(new Error(`The request is incomplete, \njwt = ${jwt},\npushToken = ${pushToken},
-        \nboxPub = ${boxPub}`))
+        let err = new Error(`The request is incomplete, \njwt = ${jwt},\npushToken = ${pushToken},
+        \nboxPub = ${boxPub}`);
+        err.statusCode = 400;
+        next(err);
     }
     const pushTransport = transports.push.send(pushToken, boxPub);
 
     pushTransport(jwt)
-        .then(() => res.send())
+        .then(() => res.send('OK'))
 });
 
 module.exports = router;
