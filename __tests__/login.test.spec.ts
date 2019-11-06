@@ -2,7 +2,8 @@ const request = require('supertest');
 const app = require('../src/app');
 
 describe('it should post to login', () => {
-    it('attempt login', async () => {
+
+    it('should return a 200 OK', async () => {
         const res = await request(app)
             .post('/login')
             .send({
@@ -11,8 +12,10 @@ describe('it should post to login', () => {
                 boxPub: 'SfCVfkLpffVqGVo97uzlKPvskx5tHNrSHxRrQ/cMgyg='
             })
             .expect(200)
+            .expect('"OK"')
     });
-    it('should return an error', async () => {
+
+    it('should return an 400 error regarding key size', async () => {
         const res = await request(app)
             .post('/login')
             .send({
@@ -20,7 +23,43 @@ describe('it should post to login', () => {
                 pushToken: 'token',
                 boxPub: "null"
             })
-            .expect(400);
-            console.log(res.error)
+            .expect(400)
+            .expect('"bad public key size"');
+    });
+
+    it('should return an 400 error, stating the request is incomplete', async () => {
+        const res = await request(app)
+            .post('/login')
+            .send({
+                jwt: 'test',
+                pushToken: 'token',
+                boxPub: null
+            })
+            .expect(400)
+            .expect('"The request is incomplete"');
+    });
+
+    it('should return an 400 error, stating the request is incomplete', async () => {
+        const res = await request(app)
+            .post('/login')
+            .send({
+                jwt: 'test',
+                pushToken: null,
+                boxPub: 'token'
+            })
+            .expect(400)
+            .expect('"The request is incomplete"');
+    });
+
+    it('should return an 400 error regarding push notifications', async () => {
+        const res = await request(app)
+            .post('/login')
+            .send({
+                jwt: 'test',
+                pushToken: 'token',
+                boxPub: "SfCVfkLpffVqGVo97uzlKPvskx5tHNrSHxRrQ/cMgyg="
+            })
+            .expect(400)
+            .expect('"Error sending push notification to user: 401 [object Object]"');
     })
 });
