@@ -1,5 +1,5 @@
 # DID-Transports ms
-The DID-Transports ms forwards uPort Disclosure Requests to a mobile phone by making use of `pushTokens`.  
+The DID-Transports ms forwards [uPort Disclosure Requests](https://developer.uport.me/messages/sharereq) to a mobile phone by making use of `pushTokens`.  
 
 ## Calls
 
