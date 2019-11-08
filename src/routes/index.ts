@@ -1,10 +1,10 @@
-import express from "express";
+import express from 'express';
 
 const router = express.Router();
 
 router.get('/', (parameters: { req: any, res: any, next: any }) => {
-  const {req, res, next} = parameters;
-  res.json('Welcome to DID-Transports-MS');
+    const {res} = parameters;
+    res.json('Welcome to DID-Transports-MS');
 });
 
 export default module.exports = router;
