@@ -7,7 +7,7 @@ import loginRouter from './routes/login';
 
 const app = express();
 
-app.use(app.get('env') === 'development' ? logger('dev') : logger('combined'));
+app.use(logger('combined'));
 app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 app.use(cookieParser());

@@ -26,7 +26,6 @@ async function createDisclosureRequest() {
 describe('it should post to login', () => {
     it('should return a 200 OK', async () => {
         const jwt = await createDisclosureRequest();
-        console.log(jwt);
         const res = await request(app)
             .post('/login')
             .send({

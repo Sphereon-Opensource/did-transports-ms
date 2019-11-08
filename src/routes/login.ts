@@ -1,5 +1,5 @@
-import express from "express";
-import {transport } from "uport-transports";
+import express from 'express';
+import {transport } from 'uport-transports';
 
 const router = express.Router();
 
