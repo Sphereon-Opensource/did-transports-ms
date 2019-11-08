@@ -1,9 +1,9 @@
-#DID-Transports ms
+# DID-Transports ms
 The DID-Transports ms forwards uPort Disclosure Requests to a mobile phone by making use of `pushTokens`.  
 
-##Calls
+## Calls
 
-###Login
+### Login
 Example request:  
 ```bash
 curl localhost:3000/login -H 'Content-type: application/json' \
@@ -18,6 +18,6 @@ Example response:
 "OK"
 ```
 
-##Commands
+## Commands
 To start the server run `npm start`.  
 The tests can be ran using `npm test`.  
