@@ -21,3 +21,8 @@ Example response:
 ## Commands
 To start the server run `npm start`.  
 The tests can be ran using `npm test`.  
+
+## Dependabot usage
+All pull requests opened by dependabot should be reviewed before merging:
+* Run all tests, fix failing tests
+* Run the project to see if it still works correctly
