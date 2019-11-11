@@ -26,7 +26,7 @@ async function createDisclosureRequest() {
 describe('it should post to login', () => {
     it('should return a 200 OK', async () => {
         const jwt = await createDisclosureRequest();
-        const res = await request(app)
+        await request(app)
             .post('/login')
             .send({
                 jwt: jwt,
@@ -38,7 +38,7 @@ describe('it should post to login', () => {
     });
 
     it('should return an 400 error regarding key size', async () => {
-        const res = await request(app)
+        await request(app)
             .post('/login')
             .send({
                 jwt: 'test',
@@ -50,7 +50,7 @@ describe('it should post to login', () => {
     });
 
     it('should return an 400 error, stating the request is incomplete', async () => {
-        const res = await request(app)
+        await request(app)
             .post('/login')
             .send({
                 jwt: 'test',
@@ -62,7 +62,7 @@ describe('it should post to login', () => {
     });
 
     it('should return an 400 error, stating the request is incomplete', async () => {
-        const res = await request(app)
+        await request(app)
             .post('/login')
             .send({
                 jwt: 'test',
@@ -74,7 +74,7 @@ describe('it should post to login', () => {
     });
 
     it('should return an 400 error regarding push notifications', async () => {
-        const res = await request(app)
+        await request(app)
             .post('/login')
             .send({
                 jwt: 'test',
