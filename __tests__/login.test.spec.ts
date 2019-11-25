@@ -49,7 +49,7 @@ describe('it should post to login', () => {
             .expect('"bad public key size"');
     });
 
-    it('should return an 400 error, stating the request is incomplete', async () => {
+    it('should return an 400 error, stating the boxPub is missing', async () => {
         await request(app)
             .post('/login')
             .send({
@@ -58,10 +58,10 @@ describe('it should post to login', () => {
                 boxPub: null
             })
             .expect(400)
-            .expect('"The request is incomplete"');
+            .expect('"Requires public encryption key of the receiver"');
     });
 
-    it('should return an 400 error, stating the request is incomplete', async () => {
+    it('should return an 400 error, stating the push token is missing', async () => {
         await request(app)
             .post('/login')
             .send({
@@ -70,7 +70,7 @@ describe('it should post to login', () => {
                 boxPub: 'token'
             })
             .expect(400)
-            .expect('"The request is incomplete"');
+            .expect('"Requires push notification token"');
     });
 
     it('should return an 400 error regarding push notifications', async () => {
