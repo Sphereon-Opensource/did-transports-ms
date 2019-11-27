@@ -10,17 +10,16 @@ router.post('/', (parameters: { body: any, res: any, next: any }) => {
 
     try {
         pushTransport = transport.push.send(pushToken, boxPub);
+        pushTransport(jwt)
+            .then(() => res.status(200).json('OK'))
+            .catch((err: any) => {
+                err.statusCode = 400;
+                return next(err)
+            })
     } catch (err) {
         err.statusCode = 400;
         return next(err)
     }
-
-    pushTransport(jwt)
-        .then(() => res.status(200).json('OK'))
-        .catch((err: any) => {
-            err.statusCode = 400;
-            return next(err)
-        })
 });
 
 export default module.exports = router;
