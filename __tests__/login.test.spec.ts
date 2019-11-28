@@ -25,6 +25,7 @@ async function createDisclosureRequest() {
 
 describe('it should post to login', () => {
     it('should return a 200 OK', async () => {
+        const responseRegex = new RegExp('{"status":"success","data":"[A-Za-z0-9\\-]+"}');
         const jwt = await createDisclosureRequest();
         await request(app)
             .post('/login')
@@ -34,7 +35,7 @@ describe('it should post to login', () => {
                 boxPub: 'SfCVfkLpffVqGVo97uzlKPvskx5tHNrSHxRrQ/cMgyg='
             })
             .expect(200)
-            .expect('"OK"')
+            .expect(responseRegex)
     });
 
     it('should return an 400 error regarding key size', async () => {

@@ -11,7 +11,7 @@ router.post('/', (parameters: { body: any, res: any, next: any }) => {
     try {
         pushTransport = transport.push.send(pushToken, boxPub);
         pushTransport(jwt)
-            .then(() => res.status(200).json('OK'))
+            .then((response:string) => res.status(200).json(response))
             .catch((err: any) => {
                 err.statusCode = 400;
                 return next(err)
