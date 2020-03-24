@@ -7,7 +7,8 @@
     "build": "tsc",
     "prestart": "npm run build",
     "start": "node ./bin/www",
-    "test": "jest"
+    "test": "jest",
+    "build-docker": "docker build -t sphereon/did-transports-ms:latest ."
   },
   "dependencies": {
     "cookie-parser": "1.4.4",
