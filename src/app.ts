@@ -4,6 +4,7 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import indexRouter from './routes';
 import loginRouter from './routes/login';
+import registerRouter from './routes/register';
 
 const app = express();
 
@@ -15,6 +16,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/login', loginRouter);
+app.use('/register', registerRouter);
 
 // error handler
 app.use((err: any, req: any, res: any, next: any) => {

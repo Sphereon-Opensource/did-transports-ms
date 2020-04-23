@@ -2,7 +2,7 @@ const request = require('supertest');
 const app = require('../src/app');
 const {Credentials} = require('uport-credentials');
 
-//setup Credentials object with newly created application identity.
+// setup Credentials object with newly created application identity.
 const credentials = new Credentials({
     appName: 'Login Example',
     did: 'did:ethr:0x88ed694ffe9244e2993d2932638a5c736371fc04',
